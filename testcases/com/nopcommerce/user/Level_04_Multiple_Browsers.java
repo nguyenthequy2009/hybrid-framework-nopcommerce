@@ -1,12 +1,8 @@
 package com.nopcommerce.user;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -19,7 +15,6 @@ import pageObjects.RegisterPageObject;
 public class Level_04_Multiple_Browsers extends BaseTest {
 	private WebDriver driver;
 	private String firstName, lastName, emailAddress, password;
-	private String projectPath = System.getProperty("user.dir");
 
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
