@@ -14,10 +14,10 @@ import pageObjects.RegisterPageObject;
 
 public class Level_04_Multiple_Browsers extends BaseTest {
 	private WebDriver driver;
-	private String firstName, lastName, emailAddress, password;
+	String firstName, lastName, emailAddress, password;
 
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
+	HomePageObject homePage;
+	RegisterPageObject registerPage;
 
 	@Parameters("browser")
 	@BeforeClass
