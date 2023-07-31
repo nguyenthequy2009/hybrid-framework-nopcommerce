@@ -77,4 +77,13 @@ public class UserRegisterPageObject extends BasePage {
 		return getElementText(driver, UserRegisterPageUI.EMAIL_EXISTING_ERROR_MESSAGE);
 	}
 
+	public void registerNewAccount(String firstName, String lastName, String emailAddress, String password, String confirmPassword) {
+		inputToFirstnameTextbox(firstName);
+		inputToLastnameTextbox(lastName);
+		inputToEmailTextbox(emailAddress);
+		inputToPasswordTextbox(password);
+		inputToConfirmPasswordTextbox(confirmPassword);
+		clickToRegisterButton();
+	}
+	
 }

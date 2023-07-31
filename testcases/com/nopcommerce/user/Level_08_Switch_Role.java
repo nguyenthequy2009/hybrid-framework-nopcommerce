@@ -34,13 +34,7 @@ public class Level_08_Switch_Role extends BaseTest {
 
 		userRegisterPage = userHomePage.openRegisterPage();
 
-		userRegisterPage.inputToFirstnameTextbox(firstName);
-		userRegisterPage.inputToLastnameTextbox(lastName);
-		userRegisterPage.inputToEmailTextbox(userEmailAddress);
-		userRegisterPage.inputToPasswordTextbox(userPassword);
-		userRegisterPage.inputToConfirmPasswordTextbox(userPassword);
-
-		userRegisterPage.clickToRegisterButton();
+		userRegisterPage.registerNewAccount(firstName, lastName, userEmailAddress, userPassword, userPassword);
 
 		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
 
