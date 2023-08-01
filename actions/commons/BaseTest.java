@@ -54,8 +54,8 @@ public class BaseTest {
 			throw new RuntimeException("Browser name invalid");
 		}
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get(GlobalConstants.USER_PAGE_URL);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(GlobalConstants.USER_DEV_URL);
 		return driver;
 	}
 
