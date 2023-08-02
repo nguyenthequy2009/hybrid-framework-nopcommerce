@@ -6,6 +6,7 @@ import java.util.Set;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -141,7 +142,7 @@ public class BasePage {
 		return driver.findElement(getByLocator(locatorType));
 	}
 
-	private List<WebElement> getListWebElement(WebDriver driver, String locatorType) {
+	public List<WebElement> getListWebElement(WebDriver driver, String locatorType) {
 		return driver.findElements(getByLocator(locatorType));
 	}
 
@@ -175,12 +176,12 @@ public class BasePage {
 
 	protected void selectItemInDefaultDropdown(WebDriver driver, String locatorType, String textItem) {
 		Select select = new Select(getWebElement(driver, locatorType));
-		select.selectByValue(textItem);
+		select.selectByVisibleText(textItem);
 	}
 
 	protected void selectItemInDefaultDropdown(WebDriver driver, String locatorType, String textItem, String... dynamicValues) {
 		Select select = new Select(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
-		select.selectByValue(textItem);
+		select.selectByVisibleText(textItem);
 	}
 
 	protected String getFirstSelectedItemInDefaultDropdown(WebDriver driver, String locatorType) {
@@ -212,7 +213,7 @@ public class BasePage {
 		}
 	}
 
-	private void sleepInSecond(long timeInSecond) {
+	public void sleepInSecond(long timeInSecond) {
 		try {
 			Thread.sleep(timeInSecond * 1000);
 		} catch (InterruptedException e) {
@@ -240,8 +241,15 @@ public class BasePage {
 		return getListWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).size();
 	}
 
-	protected void checkToDefaultCheckboxRadio(WebDriver driver, String locatorType) {
+	protected void checkToDefaultCheckboxOrRadio(WebDriver driver, String locatorType) {
 		WebElement element = getWebElement(driver, locatorType);
+		if (!element.isSelected()) {
+			element.click();
+		}
+	}
+
+	protected void checkToDefaultCheckboxOrRadio(WebDriver driver, String locatorType, String... dynamicValues) {
+		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValues));
 		if (!element.isSelected()) {
 			element.click();
 		}
@@ -249,6 +257,13 @@ public class BasePage {
 
 	protected void uncheckToDefaultCheckbox(WebDriver driver, String locatorType) {
 		WebElement element = getWebElement(driver, locatorType);
+		if (element.isSelected()) {
+			element.click();
+		}
+	}
+
+	protected void uncheckToDefaultCheckbox(WebDriver driver, String locatorType, String... dynamicValues) {
+		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValues));
 		if (element.isSelected()) {
 			element.click();
 		}
@@ -281,6 +296,16 @@ public class BasePage {
 	protected void hoverMouseToElement(WebDriver driver, String locatorType) {
 		Actions action = new Actions(driver);
 		action.moveToElement(getWebElement(driver, locatorType)).perform();
+	}
+
+	protected void pressKeyToElement(WebDriver driver, String locatorType, Keys key) {
+		Actions action = new Actions(driver);
+		action.sendKeys(getWebElement(driver, locatorType), key).perform();
+	}
+
+	protected void pressKeyToElement(WebDriver driver, String locatorType, Keys key, String... dynamicValues) {
+		Actions action = new Actions(driver);
+		action.sendKeys(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)), key).perform();
 	}
 
 	protected void scrollToBottomPage(WebDriver driver) {
@@ -432,11 +457,11 @@ public class BasePage {
 			throw new RuntimeException("Invalid page name at My Account area.");
 		}
 	}
-	
+
 	public void openPagesAtMyAccountByPageName(WebDriver driver, String pageName) {
 		waitForElementClickable(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
 		clickToElement(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
-		
+
 	}
 
 	public UserHomePageObject clickToLogOutLinkAtUserPage(WebDriver driver) {
