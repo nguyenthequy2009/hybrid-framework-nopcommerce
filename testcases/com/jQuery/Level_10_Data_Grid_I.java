@@ -1,4 +1,4 @@
-package com.jQuery.dataGrid;
+package com.jQuery;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -8,11 +8,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.jQuery.HomePageObject_I;
-import pageObjects.jQuery.PageGeneratorManager_jQuery;
+import pageObjects.jQuery.dataGrid.HomePageObject_I;
+import pageObjects.jQuery.dataGrid.PageGeneratorManager_jQuery;
 
 public class Level_10_Data_Grid_I extends BaseTest {
-	HomePageObject_I homePage1;
 
 	@Parameters({ "browser", "url" })
 	@BeforeClass
@@ -62,5 +61,6 @@ public class Level_10_Data_Grid_I extends BaseTest {
 	}
 
 	private WebDriver driver;
-
+	private HomePageObject_I homePage1;
+	
 }

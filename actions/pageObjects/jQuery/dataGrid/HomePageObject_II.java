@@ -1,9 +1,9 @@
-package pageObjects.jQuery;
+package pageObjects.jQuery.dataGrid;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.jQuery.HomePageUI_II;
+import pageUIs.jQuery.dataGrid.HomePageUI_II;
 
 public class HomePageObject_II extends BasePage {
 	WebDriver driver;

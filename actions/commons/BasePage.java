@@ -22,7 +22,8 @@ import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointObject;
-import pageUIs.nopCommerce.user.UserBasePageUI;
+import pageUIs.jQuery.uploadFile.BasePageJQueryUI;
+import pageUIs.nopCommerce.user.BasePageNopCommerceUI;
 
 public class BasePage {
 
@@ -376,6 +377,12 @@ public class BasePage {
 			return false;
 		}
 	}
+	
+	protected boolean isImageLoaded(WebDriver driver, String locatorType, String... dynamicValues) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		boolean status = (boolean) jsExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
+		return status;
+	}
 
 	protected void waitForElementVisible(WebDriver driver, String locatorType) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
@@ -418,32 +425,32 @@ public class BasePage {
 	}
 
 	public UserCustomerInfoPageObject openCustomerInfoPage(WebDriver driver) {
-		waitForElementClickable(driver, UserBasePageUI.CUSTOMER_INFO_LINK);
-		clickToElement(driver, UserBasePageUI.CUSTOMER_INFO_LINK);
+		waitForElementClickable(driver, BasePageNopCommerceUI.CUSTOMER_INFO_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.CUSTOMER_INFO_LINK);
 		return PageGeneratorManager.getUserCustomerInfoPage(driver);
 	}
 
 	public UserAddressPageObject openAddressPage(WebDriver driver) {
-		waitForElementClickable(driver, UserBasePageUI.ADDRESS_LINK);
-		clickToElement(driver, UserBasePageUI.ADDRESS_LINK);
+		waitForElementClickable(driver, BasePageNopCommerceUI.ADDRESS_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.ADDRESS_LINK);
 		return PageGeneratorManager.getUserAddressPage(driver);
 	}
 
 	public UserMyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
-		waitForElementClickable(driver, UserBasePageUI.MY_PRODUCT_REVIEW_LINK);
-		clickToElement(driver, UserBasePageUI.MY_PRODUCT_REVIEW_LINK);
+		waitForElementClickable(driver, BasePageNopCommerceUI.MY_PRODUCT_REVIEW_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.MY_PRODUCT_REVIEW_LINK);
 		return PageGeneratorManager.getUserMyProductReviewPage(driver);
 	}
 
 	public UserRewardPointObject openRewardPointPage(WebDriver driver) {
-		waitForElementClickable(driver, UserBasePageUI.REWARD_POINT_LINK);
-		clickToElement(driver, UserBasePageUI.REWARD_POINT_LINK);
+		waitForElementClickable(driver, BasePageNopCommerceUI.REWARD_POINT_LINK);
+		clickToElement(driver, BasePageNopCommerceUI.REWARD_POINT_LINK);
 		return PageGeneratorManager.getUserRewardPointPage(driver);
 	}
 
 	public BasePage openPagesAtMyAccountByName(WebDriver driver, String pageName) {
-		waitForElementClickable(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
-		clickToElement(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		clickToElement(driver, BasePageNopCommerceUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
 		switch (pageName) {
 		case "Customer info":
 			return PageGeneratorManager.getUserCustomerInfoPage(driver);
@@ -459,21 +466,31 @@ public class BasePage {
 	}
 
 	public void openPagesAtMyAccountByPageName(WebDriver driver, String pageName) {
-		waitForElementClickable(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
-		clickToElement(driver, UserBasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
+		clickToElement(driver, BasePageNopCommerceUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA, pageName);
 
 	}
 
 	public UserHomePageObject clickToLogOutLinkAtUserPage(WebDriver driver) {
-		waitForElementClickable(driver, UserBasePageUI.LOGOUT_LINK_AT_USER);
-		clickToElement(driver, UserBasePageUI.LOGOUT_LINK_AT_USER);
+		waitForElementClickable(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_USER);
+		clickToElement(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_USER);
 		return PageGeneratorManager.getUserHomePage(driver);
 	}
 
 	public AdminLoginPageObject clickToLogOutLinkAtAdminPage(WebDriver driver) {
-		waitForElementInvisible(driver, UserBasePageUI.AJAX_BUSY_AT_ADMIN);
-		clickToElement(driver, UserBasePageUI.LOGOUT_LINK_AT_ADMIN);
+		waitForElementInvisible(driver, BasePageNopCommerceUI.AJAX_BUSY_AT_ADMIN);
+		clickToElement(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_ADMIN);
 		return PageGeneratorManager.getAdminLoginPage(driver);
+	}
+
+	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+		String filePath = GlobalConstants.UPLOAD_FILE_FOLDER;
+		String fullFileName = "";
+		for (String file : fileNames) {
+			fullFileName = fullFileName + filePath + file + "\n";
+		}
+		fullFileName = fullFileName.trim();
+		getWebElement(driver, BasePageJQueryUI.UPLOAD_FILE).sendKeys(fullFileName);
 	}
 
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
