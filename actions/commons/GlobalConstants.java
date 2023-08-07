@@ -21,7 +21,7 @@ public class GlobalConstants {
 	public static final String DB_TEST_USER = "automationfc";
 	public static final String DB_TEST_PASS = "ssword1";
 	public static final long SHORT_TIMEOUT = 5;
-	public static final long LONG_TIMEOUT = 10;
+	public static final long LONG_TIMEOUT = 30;
 	public static final long RETRY_TEST_FAIL = 3;
 
 }
