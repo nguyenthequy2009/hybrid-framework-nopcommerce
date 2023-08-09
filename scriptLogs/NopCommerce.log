@@ -1,0 +1,52 @@
+[INFO ] [2023-08-09 21:49:08,207] Register - Step 01: Navigate to 'Register' Page
+[INFO ] [2023-08-09 21:49:08,961] Register - Step 02: Register new account
+[INFO ] [2023-08-09 21:49:10,798] Register - Step 03: Verify 'Register Success Message' is displayed
+[INFO ] [2023-08-09 21:49:10,924] Login - Step 01: Navigate to 'Login' Page
+[INFO ] [2023-08-09 21:49:11,477] Login - Step 02: Login with email = 'afc834@mail.vn' and password = '123456'
+[INFO ] [2023-08-09 21:49:12,598] Login - Step 03: Verify 'My Account Link' is displayed
+[INFO ] [2023-08-09 21:49:12,733] Login - Step 04: Navigate to 'Customer Info' Page
+[INFO ] [2023-08-09 21:49:13,235] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-09 21:52:35,192] Register - Step 01: Navigate to 'Register' Page
+[2023-08-09 21:52:36,254] Register - Step 02: Register new account
+[2023-08-09 21:52:38,078] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-09 21:52:38,202]  -------------------------- PASSED -------------------------- 
+[2023-08-09 21:52:38,216] Login - Step 01: Navigate to 'Login' Page
+[2023-08-09 21:52:38,951] Login - Step 02: Login with email = 'afc995@mail.vn' and password = '123456'
+[2023-08-09 21:52:42,168] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-09 21:52:42,370]  -------------------------- PASSED -------------------------- 
+[2023-08-09 21:52:42,370] Login - Step 04: Navigate to 'Customer Info' Page
+[2023-08-09 21:52:42,938] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-09 21:52:43,074]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:05:59,960] Register - Step 01: Navigate to 'Register' Page
+[2023-08-09 22:06:00,702] Register - Step 02: Register new account
+[2023-08-09 22:06:02,306] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-09 22:06:02,394]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:06:02,402] Login - Step 01: Navigate to 'Login' Page
+[2023-08-09 22:06:03,044] Login - Step 02: Login with email = 'afc2668@mail.vn' and password = '123456'
+[2023-08-09 22:06:04,161] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-09 22:06:04,285]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:06:04,285] Login - Step 04: Navigate to 'Customer Info' Page
+[2023-08-09 22:06:04,903] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-09 22:06:05,027]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:09:06,093] Register - Step 01: Navigate to 'Register' Page
+[2023-08-09 22:09:07,081] Register - Step 02: Register new account
+[2023-08-09 22:09:08,840] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-09 22:09:08,982]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:09:08,995] Login - Step 01: Navigate to 'Login' Page
+[2023-08-09 22:09:09,676] Login - Step 02: Login with email = 'afc8999@mail.vn' and password = '123456'
+[2023-08-09 22:09:10,963] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-09 22:09:11,168]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:09:11,169] Login - Step 04: Navigate to 'Customer Info' Page
+[2023-08-09 22:09:11,776] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-09 22:09:11,935]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:11:30,151] Register - Step 01: Navigate to 'Register' Page
+[2023-08-09 22:11:30,896] Register - Step 02: Register new account
+[2023-08-09 22:11:32,481] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-09 22:11:32,577]  -------------------------- FAILED -------------------------- 
+[2023-08-09 22:11:32,585] Login - Step 01: Navigate to 'Login' Page
+[2023-08-09 22:11:33,175] Login - Step 02: Login with email = 'afc944@mail.vn' and password = '123456'
+[2023-08-09 22:11:34,780] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-09 22:11:34,909]  -------------------------- PASSED -------------------------- 
+[2023-08-09 22:11:34,910] Login - Step 04: Navigate to 'Customer Info' Page
+[2023-08-09 22:11:35,462] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-09 22:11:35,575]  -------------------------- PASSED -------------------------- 
