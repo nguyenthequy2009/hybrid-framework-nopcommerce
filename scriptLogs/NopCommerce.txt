@@ -1,6 +1,0 @@
-[2023-08-10 22:35:08,673] Register - Step 01: Navigate to 'Register' Page
-[2023-08-10 22:35:10,205] Register - Step 02: Register new account
-[2023-08-10 22:35:11,969] Register - Step 03: Verify 'Register Success Message' is displayed
-[2023-08-10 22:35:12,215] Login - Step 01: Navigate to 'Login' Page
-[2023-08-10 22:35:12,787] Login - Step 02: Login with email = 'afc4829@mail.vn' and password = '123456'
-[2023-08-10 22:35:13,999] Login - Step 03: Verify 'My Account Link' is displayed
