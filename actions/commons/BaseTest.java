@@ -21,9 +21,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseTest {
 	private WebDriver driver;
 	protected final Log log;
-	
+
 	protected BaseTest() {
-		log= LogFactory.getLog(getClass());
+		log = LogFactory.getLog(getClass());
 	}
 
 	protected WebDriver getBrowserDriver(String browserName) {
@@ -114,10 +114,14 @@ public class BaseTest {
 		return driver;
 	}
 
+	public WebDriver getDriverInstance() {
+		return this.driver;
+	}
+
 	protected int generateFakeNumber() {
 		return new Random().nextInt(9999);
 	}
-	
+
 	protected boolean verifyTrue(boolean condition) {
 		boolean pass = true;
 		try {
@@ -159,5 +163,5 @@ public class BaseTest {
 		}
 		return pass;
 	}
-	
+
 }

@@ -50,3 +50,26 @@
 [2023-08-09 22:11:34,910] Login - Step 04: Navigate to 'Customer Info' Page
 [2023-08-09 22:11:35,462] Login - Step 05: Verify 'Customer Info Page' is displayed
 [2023-08-09 22:11:35,575]  -------------------------- PASSED -------------------------- 
+[2023-08-10 21:40:49,825] Register - Step 01: Navigate to 'Register' Page
+[2023-08-10 21:40:51,227] Register - Step 02: Register new account
+[2023-08-10 21:40:53,471] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-10 21:40:53,577]  -------------------------- FAILED -------------------------- 
+[2023-08-10 21:40:53,793] Login - Step 01: Navigate to 'Login' Page
+[2023-08-10 21:40:54,802] Login - Step 02: Login with email = 'afc5231@mail.vn' and password = '123456'
+[2023-08-10 21:40:56,008] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-10 21:40:56,123]  -------------------------- FAILED -------------------------- 
+[2023-08-10 21:40:56,123] Login - Step 04: Navigate to 'Customer Info' Page
+[2023-08-10 21:40:56,912] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-10 21:40:57,008]  -------------------------- FAILED -------------------------- 
+[2023-08-10 21:47:39,062] Register - Step 01: Navigate to 'Register' Page
+[2023-08-10 21:47:40,452] Register - Step 02: Register new account
+[2023-08-10 21:47:42,281] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-10 21:47:42,465] Login - Step 01: Navigate to 'Login' Page
+[2023-08-10 21:47:43,193] Login - Step 02: Login with email = 'afc6439@mail.vn' and password = '123456'
+[2023-08-10 21:47:44,693] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-10 22:35:08,673] Register - Step 01: Navigate to 'Register' Page
+[2023-08-10 22:35:10,205] Register - Step 02: Register new account
+[2023-08-10 22:35:11,969] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-10 22:35:12,215] Login - Step 01: Navigate to 'Login' Page
+[2023-08-10 22:35:12,787] Login - Step 02: Login with email = 'afc4829@mail.vn' and password = '123456'
+[2023-08-10 22:35:13,999] Login - Step 03: Verify 'My Account Link' is displayed
