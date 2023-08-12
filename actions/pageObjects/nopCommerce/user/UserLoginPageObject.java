@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import commons.PageGeneratorManager;
+import io.qameta.allure.Step;
 import pageUIs.nopCommerce.user.UserLoginPageUI;
 
 public class UserLoginPageObject extends BasePage {
@@ -39,6 +40,7 @@ public class UserLoginPageObject extends BasePage {
 		sendkeyToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, password);
 	}
 
+	@Step("Login to 'USER Home Page' with email = {0} and password = {1}")
 	public UserHomePageObject loginAsUser(String emailAddress, String password) {
 		inputToEmailTextbox(emailAddress);
 		inputToPasswordTextbox(password);
