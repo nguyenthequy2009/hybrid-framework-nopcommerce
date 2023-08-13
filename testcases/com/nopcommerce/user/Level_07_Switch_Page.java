@@ -43,7 +43,8 @@ public class Level_07_Switch_Page extends BaseTest {
 
 		registerPage.clickToRegisterButton();
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-
+	
+		homePage = registerPage.openHomePage();
 	}
 
 	@Test

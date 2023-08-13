@@ -3,6 +3,7 @@ package pageObjects.nopCommerce.user;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import pageUIs.nopCommerce.user.UserRegisterPageUI;
 
@@ -88,5 +89,14 @@ public class UserRegisterPageObject extends BasePage {
 		inputToConfirmPasswordTextbox(confirmPassword);
 		clickToRegisterButton();
 	}
-	
+
+	public UserHomePageObject openHomePage() {
+		overrideImplicitTimeout(driver, shortTimeout);
+		if (isElementDisplayed(driver, UserRegisterPageUI.LOG_OUT_LINK) == true) {
+			clickToElement(driver, UserRegisterPageUI.LOG_OUT_LINK);
+		}
+		overrideImplicitTimeout(driver, longTimeout);
+		return PageGeneratorManager.getUserHomePage(driver);
+	}
+
 }

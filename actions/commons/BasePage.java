@@ -284,7 +284,7 @@ public class BasePage {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
 	}
 
-	private void overrideImplicitTimeout(WebDriver driver, long timeOut) {
+	protected void overrideImplicitTimeout(WebDriver driver, long timeOut) {
 		driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
 	}
 
@@ -526,7 +526,7 @@ public class BasePage {
 		getWebElement(driver, BasePageJQueryUI.UPLOAD_FILE).sendKeys(fullFileName);
 	}
 
-	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
-	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
+	protected long longTimeout = GlobalConstants.LONG_TIMEOUT;
+	protected long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
 
 }
