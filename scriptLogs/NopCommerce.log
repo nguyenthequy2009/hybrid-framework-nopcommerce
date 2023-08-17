@@ -73,3 +73,40 @@
 [2023-08-10 22:35:12,215] Login - Step 01: Navigate to 'Login' Page
 [2023-08-10 22:35:12,787] Login - Step 02: Login with email = 'afc4829@mail.vn' and password = '123456'
 [2023-08-10 22:35:13,999] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-16 22:12:22,938] Login - Step 01: Navigate to 'Login' Page
+[2023-08-16 22:12:24,153] Login - Step 02: Login with email = 'afc1091@mail.vn' and password = '123456'
+[2023-08-16 22:53:27,355] Pre-Condition - Step 01: Navigate to 'Login' Page
+[2023-08-16 22:53:28,530] Pre-Condition - Step 02: Set cookie and reload page
+[2023-08-16 22:53:32,918] Pre-Condition - Step 03: Verify 'My Account Link' is displayed
+[2023-08-16 22:53:33,039]  -------------------------- PASSED -------------------------- 
+[2023-08-16 22:54:47,278] Pre-Condition - Step 01: Navigate to 'Login' Page
+[2023-08-16 22:54:48,477] Pre-Condition - Step 02: Set cookie and reload page
+[2023-08-16 22:54:54,947] Pre-Condition - Step 03: Verify 'My Account Link' is displayed
+[2023-08-16 22:54:55,085]  -------------------------- PASSED -------------------------- 
+[2023-08-17 21:32:32,475] Register - Step 01: Navigate to 'Register' Page
+[2023-08-17 21:32:38,567] Register - Step 02: Register new account
+[2023-08-17 21:32:44,831] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-17 21:33:02,756]  -------------------------- FAILED -------------------------- 
+[2023-08-17 21:33:02,761] Login - Step 01: Navigate to 'Login' Page
+[2023-08-17 21:33:12,289] Login - Step 02: Login with email = 'afc3355@mail.vn' and password = '123456'
+[2023-08-17 21:33:17,949] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-17 21:33:19,915]  -------------------------- PASSED -------------------------- 
+[2023-08-17 21:33:19,915] Login - Step 04: Navigate to 'Customer Info' Page
+[2023-08-17 21:33:21,267] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-17 21:33:21,503]  -------------------------- PASSED -------------------------- 
+[2023-08-17 21:36:39,851] Register - Step 01: Navigate to 'Register' Page
+[2023-08-17 21:36:42,662] Register - Step 02: Register new account
+[2023-08-17 21:36:45,284] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-17 21:36:45,393]  -------------------------- FAILED -------------------------- 
+[2023-08-17 21:36:45,395] Login - Step 01: Navigate to 'Login' Page
+[2023-08-17 21:36:51,481] Login - Step 02: Login with email = 'afc3476@mail.vn' and password = '123456'
+[2023-08-17 21:36:57,164] Login - Step 03: Verify 'My Account Link' is displayed
+[2023-08-17 21:37:07,865]  -------------------------- FAILED -------------------------- 
+[2023-08-17 21:37:07,865] Login - Step 04: Navigate to 'Customer Info' Page
+[2023-08-17 21:37:08,769] Login - Step 05: Verify 'Customer Info Page' is displayed
+[2023-08-17 21:37:08,899]  -------------------------- PASSED -------------------------- 
+[2023-08-17 22:05:50,981] Register - Step 01: Navigate to 'Register' Page
+[2023-08-17 22:05:56,098] Register - Step 02: Register new account
+[2023-08-17 22:05:58,578] Register - Step 03: Verify 'Register Success Message' is displayed
+[2023-08-17 22:05:59,203] OS name = windows 10
+[2023-08-17 22:05:59,204] Driver instance name = firefoxdriver: firefox on windows (534be72a-bb7b-49c6-b1ec-d921d09865c8)
