@@ -1,5 +1,0 @@
-[2023-08-17 22:05:50,981] Register - Step 01: Navigate to 'Register' Page
-[2023-08-17 22:05:56,098] Register - Step 02: Register new account
-[2023-08-17 22:05:58,578] Register - Step 03: Verify 'Register Success Message' is displayed
-[2023-08-17 22:05:59,203] OS name = windows 10
-[2023-08-17 22:05:59,204] Driver instance name = firefoxdriver: firefox on windows (534be72a-bb7b-49c6-b1ec-d921d09865c8)
