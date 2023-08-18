@@ -82,12 +82,26 @@ public class UserRegisterPageObject extends BasePage {
 
 	@Step("Register new account with firstname = {0}, lastname = {1}, email = {2}, password = {3}, confirm password = {4}")
 	public void registerNewAccount(String firstName, String lastName, String emailAddress, String password, String confirmPassword) {
-		inputToFirstnameTextbox(firstName);
-		inputToLastnameTextbox(lastName);
-		inputToEmailTextbox(emailAddress);
-		inputToPasswordTextbox(password);
-		inputToConfirmPasswordTextbox(confirmPassword);
-		clickToRegisterButton();
+		inputToTextboxByID(driver, "FirstName", firstName);
+		inputToTextboxByID(driver, "LastName", lastName);
+		inputToTextboxByID(driver, "Email", emailAddress);
+		inputToTextboxByID(driver, "Password", password);
+		inputToTextboxByID(driver, "ConfirmPassword", confirmPassword);
+		clickToButtonByText(driver, "Register");
+	}
+
+	public void registerNewAccount(String firstName, String lastName, String dayOfBirth, String monthOfBirth, String yearOfBirth, String emailAddress, String password, String confirmPassword) {
+		clickToRadioButtonByLabel(driver, "Female");
+		inputToTextboxByID(driver, "FirstName", firstName);
+		inputToTextboxByID(driver, "LastName", lastName);
+		selectToDropdownByName(driver, "DateOfBirthDay", dayOfBirth);
+		selectToDropdownByName(driver, "DateOfBirthMonth", monthOfBirth);
+		selectToDropdownByName(driver, "DateOfBirthYear", yearOfBirth);
+		inputToTextboxByID(driver, "Email", emailAddress);
+		clickToCheckboxByLabel(driver, "Newsletter");
+		inputToTextboxByID(driver, "Password", password);
+		inputToTextboxByID(driver, "ConfirmPassword", confirmPassword);
+		clickToButtonByText(driver, "Register");
 	}
 
 	public UserHomePageObject openHomePage() {

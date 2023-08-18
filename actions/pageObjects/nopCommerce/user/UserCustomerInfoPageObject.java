@@ -22,5 +22,5 @@ public class UserCustomerInfoPageObject extends BasePage {
 		waitForElementVisible(driver, UserCustomerInfoPageUI.CUSTOMER_INFO_HEADER);
 		return isElementDisplayed(driver, UserCustomerInfoPageUI.CUSTOMER_INFO_HEADER);
 	}
-	
+
 }

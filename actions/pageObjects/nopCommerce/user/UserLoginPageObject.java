@@ -42,9 +42,10 @@ public class UserLoginPageObject extends BasePage {
 
 	@Step("Login to 'USER Home Page' with email = {0} and password = {1}")
 	public UserHomePageObject loginAsUser(String emailAddress, String password) {
-		inputToEmailTextbox(emailAddress);
-		inputToPasswordTextbox(password);
-		return clickToLoginButton();
+		inputToTextboxByID(driver, "Email", emailAddress);
+		inputToTextboxByID(driver, "Password", password);
+		clickToButtonByText(driver, "Log in");
+		return PageGeneratorManager.getUserHomePage(driver);
 	}
 
 }
