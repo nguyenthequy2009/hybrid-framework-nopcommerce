@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Wordpress">
+	<listeners>
+		<listener class-name="commons.MethodListener" />
+		<listener class-name="reportConfig.ReportNGListener" />
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	
+	<parameter name="urlAdmin" value="https://quynt.net/wp-admin/" />
+	<parameter name="urlUser" value="https://quynt.net/" />
+	
+	<test name="Run on Firefox">
+		<parameter name="browser" value="firefox" />
+		<packages>
+			<package name="com.wordpress.admin" />
+		</packages>
+	</test>
+
+</suite>
