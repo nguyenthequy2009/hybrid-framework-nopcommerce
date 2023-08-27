@@ -7,11 +7,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.wordpress.admin.AdminDashboardPO;
-import pageObjects.wordpress.admin.AdminLoginPO;
-import pageObjects.wordpress.admin.AdminPostAddNewPO;
-import pageObjects.wordpress.admin.AdminPostSearchPO;
-import pageObjects.wordpress.admin.PageGeneratorManager_wordpress;
+import pageObjects.wordpress.AdminDashboardPO;
+import pageObjects.wordpress.AdminLoginPO;
+import pageObjects.wordpress.AdminPostAddNewPO;
+import pageObjects.wordpress.AdminPostSearchPO;
+import pageObjects.wordpress.PageGeneratorManager_wordpress;
+import pageObjects.wordpress.UserHomePO;
+import pageObjects.wordpress.UserPostDetailPO;
 
 public class Post_01_Create_Search_View_Edit_Delete extends BaseTest {
 
@@ -21,12 +23,17 @@ public class Post_01_Create_Search_View_Edit_Delete extends BaseTest {
 	int randomNumber = generateFakeNumber();
 	String postTitle = "Live Coding Title " + randomNumber;
 	String postBody = "Live Coding Body " + randomNumber;
+	String authorName = "Quy NT";
+	String adminUrl, endUserUrl;
+	String currentDay = getCurrentDay();
 
-	@Parameters({ "browser", "urlAdmin" })
+	@Parameters({ "browser", "urlAdmin", "urlUser" })
 	@BeforeClass
-	public void beforeClass(String browserName, String appUrl) {
-		log.info("Pre-Condition - Step 01: Open browser and Admin URL");
-		driver = getBrowserDriver(browserName, appUrl);
+	public void beforeClass(String browserName, String adminUrl, String endUserUrl) {
+		log.info("Pre-Condition - Step 01: Open browser and Admin Site");
+		this.adminUrl = adminUrl;
+		this.endUserUrl = endUserUrl;
+		driver = getBrowserDriver(browserName, this.adminUrl);
 		adminLoginPage = PageGeneratorManager_wordpress.getAdminLoginPage(driver);
 
 		log.info("Pre-Condition - Step 02: Enter to 'USERNAME' textbox with value: " + adminUsername);
@@ -69,24 +76,49 @@ public class Post_01_Create_Search_View_Edit_Delete extends BaseTest {
 	}
 
 	@Test
-	public void Post_02_Search_Post() {
+	public void Post_02_Search_And_View_Post() {
 		log.info("Search-Post - Step 01: Open 'Search Post' Page");
 		adminPostSearchPage = adminPostAddNewPage.openSearchPostPageUrl(searchPostURL);
 
+		log.info("Search-Post - Step 02: Enter to 'SEARCH' textbox");
+		adminPostSearchPage.enterToSearchTextbox(postTitle);
+
+		log.info("Search-Post - Step 03: Click to 'Search posts' button");
+		adminPostSearchPage.clickToSearchPostsButton();
+
+		log.info("Search-Post - Step 04: Verify search table contains '" + postTitle + "'");
+		verifyTrue(adminPostSearchPage.isPostSearchTableDisplayed("title", postTitle));
+
+		log.info("Search-Post - Step 05: Verify search table contains '" + authorName + "'");
+		verifyTrue(adminPostSearchPage.isPostSearchTableDisplayed("author", authorName));
+
+		log.info("Search-Post - Step 06: Open 'End User' Site");
+		userHomePage = adminPostSearchPage.openEndUserSite(driver, this.endUserUrl);
+
+		log.info("Search-Post - Step 07: Verify Post info displayed at Home Page");
+		verifyTrue(userHomePage.isPostInfoDisplayedWithPostTitle(postTitle));
+		verifyTrue(userHomePage.isPostInfoDisplayedWithPostBody(postTitle, postBody));
+		verifyTrue(userHomePage.isPostInfoDisplayedWithAuthorName(postTitle, authorName));
+		verifyTrue(userHomePage.isPostInfoDisplayedWithCurrentDay(postTitle, currentDay));
+
+		log.info("Search-Post - Step 08: Click to 'Post title'");
+		userPostDetailPage = userHomePage.clickToPostTitle(postTitle);
+
+		log.info("Search-Post - Step 09: Verify Post info displayed at 'Post Detail' Page");
+		verifyTrue(userPostDetailPage.isPostInfoDisplayedWithPostTitle(postTitle));
+		verifyTrue(userPostDetailPage.isPostInfoDisplayedWithPostBody(postTitle, postBody));
+		verifyTrue(userPostDetailPage.isPostInfoDisplayedWithAuthorName(postTitle, authorName));
+		verifyTrue(userPostDetailPage.isPostInfoDisplayedWithCurrentDay(postTitle, currentDay));
+
 	}
 
 	@Test
-	public void Post_03_View_Post() {
+	public void Post_03_Edit_Post() {
 
 	}
 
 	@Test
-	public void Post_04_Edit_Post() {
-
-	}
-
-	@Test
-	public void Post_05_Delete_Post() {
+	public void Post_04_Delete_Post() {
 
 	}
 
@@ -100,5 +132,7 @@ public class Post_01_Create_Search_View_Edit_Delete extends BaseTest {
 	private AdminDashboardPO adminDashboardPage;
 	private AdminPostAddNewPO adminPostAddNewPage;
 	private AdminPostSearchPO adminPostSearchPage;
+	private UserHomePO userHomePage;
+	private UserPostDetailPO userPostDetailPage;
 
 }

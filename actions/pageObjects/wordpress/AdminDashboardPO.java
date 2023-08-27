@@ -1,9 +1,9 @@
-package pageObjects.wordpress.admin;
+package pageObjects.wordpress;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.wordpress.admin.AdminDashboardPUI;
+import pageUIs.wordpress.AdminDashboardPUI;
 
 public class AdminDashboardPO extends BasePage {
 	WebDriver driver;
