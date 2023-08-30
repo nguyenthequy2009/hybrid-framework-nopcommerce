@@ -35,4 +35,35 @@ public class AdminPostSearchPO extends BasePage {
 		return isElementDisplayed(driver, AdminPostSearchPUI.TABLE_ROW_VALUE_BY_HEADER_INDEX, String.valueOf(headerIndex), cellValue);
 	}
 
+	public AdminPostAddNewPO clickToPostTitleLink(String editPostTitle) {
+		waitForElementClickable(driver, AdminPostSearchPUI.ROW_TITLE_DETAIL_BY_TITLE_NAME, editPostTitle);
+		clickToElement(driver, AdminPostSearchPUI.ROW_TITLE_DETAIL_BY_TITLE_NAME, editPostTitle);
+		return PageGeneratorManager_wordpress.getAdminPostAddNewPage(driver);
+	}
+
+	public void selectPostCheckboxByPostTitle(String editPostTitle) {
+		waitForElementClickable(driver, AdminPostSearchPUI.ROW_CHECKBOX_BY_TITLE_NAME, editPostTitle);
+		checkToDefaultCheckboxOrRadio(driver, AdminPostSearchPUI.ROW_CHECKBOX_BY_TITLE_NAME, editPostTitle);
+	}
+
+	public void selectTextItemInActionDropdown(String dropdownItem) {
+		waitForElementClickable(driver, AdminPostSearchPUI.ACTION_DROPDOWN);
+		selectItemInDefaultDropdown(driver, AdminPostSearchPUI.ACTION_DROPDOWN, dropdownItem);
+	}
+
+	public void clickToApplyButton() {
+		waitForElementClickable(driver, AdminPostSearchPUI.APPLY_BUTTON);
+		clickToElement(driver, AdminPostSearchPUI.APPLY_BUTTON);
+	}
+
+	public boolean isMoveToTrashSucccessMessageDisplayed(String message) {
+		waitForElementVisible(driver, AdminPostSearchPUI.MOVE_TO_TRASH_SUCCESS_MESSAGE, message);
+		return isElementDisplayed(driver, AdminPostSearchPUI.MOVE_TO_TRASH_SUCCESS_MESSAGE, message);
+	}
+
+	public boolean isNoPostsFoundMessageDisplayed(String message) {
+		waitForElementVisible(driver, AdminPostSearchPUI.NO_POST_FOUND_MESSAGE, message);
+		return isElementDisplayed(driver, AdminPostSearchPUI.NO_POST_FOUND_MESSAGE, message);
+	}
+
 }

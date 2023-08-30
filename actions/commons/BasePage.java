@@ -25,6 +25,7 @@ import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserMyProductReviewPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointObject;
+import pageObjects.wordpress.AdminDashboardPO;
 import pageObjects.wordpress.PageGeneratorManager_wordpress;
 import pageObjects.wordpress.UserHomePO;
 import pageUIs.jQuery.uploadFile.BasePageJQueryUI;
@@ -177,6 +178,11 @@ public class BasePage {
 		element.sendKeys(textValue);
 	}
 
+	protected void clearValueInElementByDeleteKey(WebDriver driver, String locatorType) {
+		WebElement element = getWebElement(driver, locatorType);
+		element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+	}
+
 	protected void sendkeyToElement(WebDriver driver, String locatorType, String textValue, String... dynamicValues) {
 		WebElement element = getWebElement(driver, getDynamicXpath(locatorType, dynamicValues));
 		element.clear();
@@ -241,8 +247,8 @@ public class BasePage {
 	protected String getElementAttributeValue(WebDriver driver, String locatorType, String attributeName) {
 		return getWebElement(driver, locatorType).getAttribute(attributeName);
 	}
-	
-	protected String getElementAttributeValue(WebDriver driver, String locatorType, String attributeName, String...dynamicValues) {
+
+	protected String getElementAttributeValue(WebDriver driver, String locatorType, String attributeName, String... dynamicValues) {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getAttribute(attributeName);
 	}
 
@@ -309,6 +315,20 @@ public class BasePage {
 	public boolean isElementUndisplayed(WebDriver driver, String locatorType) {
 		overrideImplicitTimeout(driver, shortTimeout);
 		List<WebElement> elements = getListWebElement(driver, locatorType);
+		overrideImplicitTimeout(driver, longTimeout);
+		if (elements.size() == 0) {
+			return true;
+		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	public boolean isElementUndisplayed(WebDriver driver, String locatorType, String...dynamicValues ) {
+		overrideImplicitTimeout(driver, shortTimeout);
+		List<WebElement> elements = getListWebElement(driver, getDynamicXpath(locatorType, dynamicValues));
 		overrideImplicitTimeout(driver, longTimeout);
 		if (elements.size() == 0) {
 			return true;
@@ -459,6 +479,13 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locatorType)));
 		overrideImplicitTimeout(driver, longTimeout);
 	}
+	
+	protected void waitForElementUndisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, shortTimeout);
+		overrideImplicitTimeout(driver, shortTimeout);
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
+		overrideImplicitTimeout(driver, longTimeout);
+	}
 
 	protected void waitForAllElementInvisible(WebDriver driver, String locatorType) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
@@ -536,6 +563,7 @@ public class BasePage {
 
 	/**
 	 * Click to dynamic Button by Text
+	 * 
 	 * @param driver
 	 * @param buttonText
 	 */
@@ -546,6 +574,7 @@ public class BasePage {
 
 	/**
 	 * Select item in dropdown by Name attribute
+	 * 
 	 * @param driver
 	 * @param dropdownAttributeName
 	 * @param itemValue
@@ -554,9 +583,10 @@ public class BasePage {
 		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownAttributeName);
 		selectItemInDefaultDropdown(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, itemValue, dropdownAttributeName);
 	}
-	
+
 	/**
 	 * Click to dynamic Radio Button by Label name
+	 * 
 	 * @param driver
 	 * @param radioButtonLabelName
 	 */
@@ -564,9 +594,10 @@ public class BasePage {
 		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabelName);
 		checkToDefaultCheckboxOrRadio(driver, BasePageNopCommerceUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabelName);
 	}
-	
+
 	/**
 	 * Click to dynamic Checkbox by Label name
+	 * 
 	 * @param driver
 	 * @param checkboxLabelName
 	 */
@@ -574,9 +605,10 @@ public class BasePage {
 		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabelName);
 		checkToDefaultCheckboxOrRadio(driver, BasePageNopCommerceUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabelName);
 	}
-	
+
 	/**
 	 * Get Value in textbox by textboxID
+	 * 
 	 * @param driver
 	 * @param textboxID
 	 * @return
@@ -585,7 +617,7 @@ public class BasePage {
 		waitForElementVisible(driver, BasePageNopCommerceUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
 		return getElementAttributeValue(driver, BasePageNopCommerceUI.DYNAMIC_TEXTBOX_BY_ID, "value", textboxID);
 	}
-	
+
 	public UserHomePageObject clickToLogOutLinkAtUserPage(WebDriver driver) {
 		waitForElementClickable(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_USER);
 		clickToElement(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_USER);
@@ -608,11 +640,16 @@ public class BasePage {
 		getWebElement(driver, BasePageJQueryUI.UPLOAD_FILE).sendKeys(fullFileName);
 	}
 
-	public UserHomePO openEndUserSite(WebDriver driver,String endUserUrl) {
+	public UserHomePO openEndUserSite(WebDriver driver, String endUserUrl) {
 		openPageUrl(driver, endUserUrl);
 		return PageGeneratorManager_wordpress.getUserHomePage(driver);
 	}
-	
+
+	public AdminDashboardPO openAdminSite(WebDriver driver, String adminUrl) {
+		openPageUrl(driver, adminUrl);
+		return PageGeneratorManager_wordpress.getAdminDashboardPage(driver);
+	}
+
 	protected long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	protected long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
 
