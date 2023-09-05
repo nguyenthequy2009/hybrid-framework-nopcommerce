@@ -16,6 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -41,6 +42,8 @@ public class BaseTest {
 		if (browserList == BrowserList.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
+		} else if (browserList == BrowserList.SAFARI) {
+			driver = new SafariDriver();
 		} else if (browserList == BrowserList.H_FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions options = new FirefoxOptions();
@@ -85,6 +88,8 @@ public class BaseTest {
 		if (browserList == BrowserList.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
+		} else if (browserList == BrowserList.SAFARI) {
+			driver = new SafariDriver();
 		} else if (browserList == BrowserList.H_FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions options = new FirefoxOptions();
@@ -197,9 +202,9 @@ public class BaseTest {
 
 			String driverInstanceName = driver.toString().toLowerCase();
 			log.info("Driver instance name = " + driverInstanceName);
-			
+
 			log.info("----------------------------------------------------------------------------------------------------");
-			
+
 			String browserDriverName = null;
 
 			if (driverInstanceName.contains("chrome")) {
@@ -239,7 +244,7 @@ public class BaseTest {
 			}
 		}
 	}
-	
+
 	protected String getCurrentDate() {
 		DateTime nowUTC = new DateTime();
 		int date = nowUTC.getDayOfMonth();

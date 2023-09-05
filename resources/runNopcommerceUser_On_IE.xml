@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Nopcommerce">
+	<listeners>
+		<listener class-name="commons.MethodListener" />
+	</listeners>
+
+	<test name="Run on Internet Explorer">
+		<parameter name="browser" value="ie" />
+		<classes>
+			<class name="com.nopcommerce.user.Level_18_Pattern_Object" />
+		</classes>
+	</test>
+</suite>
