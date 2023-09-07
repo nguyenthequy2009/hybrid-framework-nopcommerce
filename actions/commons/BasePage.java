@@ -207,8 +207,13 @@ public class BasePage {
 		select.selectByVisibleText(textItem);
 	}
 
-	protected String getFirstSelectedItemInDefaultDropdown(WebDriver driver, String locatorType) {
+	public String getFirstSelectedItemInDefaultDropdown(WebDriver driver, String locatorType) {
 		Select select = new Select(getWebElement(driver, locatorType));
+		return select.getFirstSelectedOption().getText();
+	}
+	
+	public String getFirstSelectedItemInDefaultDropdown(WebDriver driver, String locatorType, String... dynamicValues) {
+		Select select = new Select(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
 		return select.getFirstSelectedOption().getText();
 	}
 
@@ -345,6 +350,10 @@ public class BasePage {
 
 	protected boolean isElementSelected(WebDriver driver, String locatorType) {
 		return getWebElement(driver, locatorType).isSelected();
+	}
+	
+	protected boolean isElementSelected(WebDriver driver, String locatorType, String... dynamicValues) {
+		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isSelected();
 	}
 
 	protected void switchToFrameIframe(WebDriver driver, String locatorType) {
@@ -582,6 +591,24 @@ public class BasePage {
 	public void selectToDropdownByName(WebDriver driver, String dropdownAttributeName, String itemValue) {
 		waitForElementClickable(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownAttributeName);
 		selectItemInDefaultDropdown(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, itemValue, dropdownAttributeName);
+	}
+	
+	public String getFirstSelectedItemInDefaultDropdownByName(WebDriver driver, String dropdownAttributeName) {
+		waitForElementVisible(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownAttributeName);
+		return getFirstSelectedItemInDefaultDropdown(driver, BasePageNopCommerceUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownAttributeName);
+	}
+	
+	
+	/**
+	 * Verify Radio Textbox is Selected by Label
+	 * 
+	 * @param driver
+	 * @param radioButtonLabelName
+	 */
+	
+	public boolean isRadioButtonSelectedByLabel(WebDriver driver, String radioButtonLabelName) {
+		waitForElementVisible(driver, BasePageNopCommerceUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabelName);
+		return isElementSelected(driver, BasePageNopCommerceUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabelName);
 	}
 
 	/**

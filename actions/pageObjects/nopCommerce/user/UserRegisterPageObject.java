@@ -91,14 +91,12 @@ public class UserRegisterPageObject extends BasePage {
 	}
 
 	public void registerNewAccount(String firstName, String lastName, String dayOfBirth, String monthOfBirth, String yearOfBirth, String emailAddress, String password, String confirmPassword) {
-		clickToRadioButtonByLabel(driver, "Female");
 		inputToTextboxByID(driver, "FirstName", firstName);
 		inputToTextboxByID(driver, "LastName", lastName);
 		selectToDropdownByName(driver, "DateOfBirthDay", dayOfBirth);
 		selectToDropdownByName(driver, "DateOfBirthMonth", monthOfBirth);
 		selectToDropdownByName(driver, "DateOfBirthYear", yearOfBirth);
 		inputToTextboxByID(driver, "Email", emailAddress);
-		clickToCheckboxByLabel(driver, "Newsletter");
 		inputToTextboxByID(driver, "Password", password);
 		inputToTextboxByID(driver, "ConfirmPassword", confirmPassword);
 		clickToButtonByText(driver, "Register");

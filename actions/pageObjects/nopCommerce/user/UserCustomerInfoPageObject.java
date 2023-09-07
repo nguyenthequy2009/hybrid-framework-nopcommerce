@@ -23,4 +23,16 @@ public class UserCustomerInfoPageObject extends BasePage {
 		return isElementDisplayed(driver, UserCustomerInfoPageUI.CUSTOMER_INFO_HEADER);
 	}
 
+	public boolean isCustomerInfoUpdateSuccessfulMessageDisplayed(String message) {
+		waitForElementVisible(driver, UserCustomerInfoPageUI.CUSTOMER_INFO_UPDATE_SUCCESS_MESSAGE, message);
+		return isElementDisplayed(driver, UserCustomerInfoPageUI.CUSTOMER_INFO_UPDATE_SUCCESS_MESSAGE, message);
+	}
+
+	public void clickToCloseUpdateMessageIcon() {
+		waitForElementClickable(driver, UserCustomerInfoPageUI.CUSTOMER_INFO_UPDATE_CLOSE_ICON);
+		clickToElement(driver, UserCustomerInfoPageUI.CUSTOMER_INFO_UPDATE_CLOSE_ICON);
+	}
+
+	
+	
 }
