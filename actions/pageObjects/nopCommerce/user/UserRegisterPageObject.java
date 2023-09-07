@@ -108,9 +108,12 @@ public class UserRegisterPageObject extends BasePage {
 		overrideImplicitTimeout(driver, shortTimeout);
 		if (isElementDisplayed(driver, UserRegisterPageUI.LOG_OUT_LINK) == true) {
 			clickToElement(driver, UserRegisterPageUI.LOG_OUT_LINK);
+			overrideImplicitTimeout(driver, longTimeout);
+			return PageGeneratorManager.getUserHomePage(driver);
+		} else {
+			overrideImplicitTimeout(driver, longTimeout);
+			return PageGeneratorManager.getUserHomePage(driver);
 		}
-		overrideImplicitTimeout(driver, longTimeout);
-		return PageGeneratorManager.getUserHomePage(driver);
 	}
 
 }

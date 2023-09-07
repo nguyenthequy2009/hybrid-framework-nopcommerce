@@ -2,6 +2,7 @@ package commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -134,6 +135,10 @@ public class BaseTest {
 
 	protected int generateFakeNumber() {
 		return new Random().nextInt(9999);
+	}
+
+	protected long generateFakeNumberByDateTime() {
+		return Calendar.getInstance().getTimeInMillis() % 100000;
 	}
 
 	protected boolean verifyTrue(boolean condition) {
