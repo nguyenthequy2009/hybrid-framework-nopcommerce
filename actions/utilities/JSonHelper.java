@@ -1,6 +1,7 @@
 package utilities;
 
 import java.io.File;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -41,6 +42,50 @@ public class JSonHelper {
 
 	@JsonProperty("year")
 	private String year;
+
+	@JsonProperty("login")
+	private Login login;
+
+	public static class Login {
+		@JsonProperty("username")
+		private String username;
+
+		@JsonProperty("password")
+		private String password;
+
+	}
+
+	public String getLoginUsername() {
+		return login.username;
+	}
+
+	public String getLoginPassword() {
+		return login.password;
+	}
+
+	@JsonProperty("subjects")
+	private List<Subject> subjects;
+
+	public List<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public static class Subject {
+		@JsonProperty("name")
+		private String name;
+
+		@JsonProperty("point")
+		private String point;
+
+		public String getSubjectName() {
+			return name;
+		}
+
+		public String getSubjectPoint() {
+			return point;
+		}
+
+	}
 
 	public String getFirstName() {
 		return firstName;

@@ -5,5 +5,19 @@
 	"password": "123456",
 	"date": "10",
 	"month": "August",
-	"year": "1999"
+	"year": "1999",
+	"login": {
+		"username": "automation",
+		"password": "123456"
+	},
+	"subjects": [
+		{
+			"name": "Math",
+			"point": 9.0
+		},
+		{
+			"name": "English",
+			"point": 10.0
+		}
+	]
 }

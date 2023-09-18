@@ -27,9 +27,9 @@ public class UserAddressPageObject extends BasePage {
 		clickToElement(driver, BasePageNopCommerceUI.CLOSE_MESSAGE_ICON);
 	}
 
-	public String getAddressInfoByClass( String dynamicClass) {
+	public String getAddressInfoByClass(String dynamicClass) {
 		waitForElementVisible(driver, UserAddressPageUI.DYNAMIC_ADDRESS_INFO_BY_CLASS, dynamicClass);
 		return getElementText(driver, UserAddressPageUI.DYNAMIC_ADDRESS_INFO_BY_CLASS, dynamicClass);
 	}
-	
+
 }

@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import pageObjects.nopCommerce.user.UserAddressPageObject;
+import pageObjects.nopCommerce.user.UserChangePasswordPO;
 import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserLoginPageObject;
@@ -32,6 +33,7 @@ public class Level_20_PO_MyAccount extends BaseTest {
 		yearOfBirth = "1993";
 		emailAddress = dataFaker.getEmailAddress();
 		password = dataFaker.getPassword();
+		newPassword = dataFaker.getPassword();
 
 		editGender = "Female";
 		editFirstName = "Automation";
@@ -255,10 +257,48 @@ public class Level_20_PO_MyAccount extends BaseTest {
 
 	}
 
-//	@Test
-//	public void User_02_Login() {
-//
-//	}
+	@Test
+	public void MyAccount_03_Change_Password() {
+		log.info("Change_Password - Step 01: Navigate to 'Change Password' Page");
+		changePasswordPage = addressPage.openChangePasswordPage(driver);
+
+		log.info("Change_Password - Step 02: Enter to Old Password textbox value = " + password);
+		changePasswordPage.inputToTextboxByID(driver, "OldPassword", password);
+
+		log.info("Change_Password - Step 03: Enter to New Password textbox value = " + newPassword);
+		changePasswordPage.inputToTextboxByID(driver, "NewPassword", newPassword);
+
+		log.info("Change_Password - Step 04: Enter to Confirm New Password textbox value = " + newPassword);
+		changePasswordPage.inputToTextboxByID(driver, "ConfirmNewPassword", newPassword);
+
+		log.info("Change_Password - Step 05: Click to Change Password button");
+		changePasswordPage.clickToButtonByText(driver, "Change password");
+
+		log.info("Change_Password - Step 06: Verify Chang pass mess display");
+		Assert.assertTrue(changePasswordPage.isChangePasswordSuccessfulMessageDisplayed("Password was changed"));
+
+		log.info("Change_Password - Step 07: Click to close message icon");
+		changePasswordPage.clickToCloseChangePasswordSuccessfulMessageIcon();
+
+		log.info("Change_Password - Step 08: Click to logout link");
+		homePage = changePasswordPage.clickToLogOutLinkAtUserPage(driver);
+
+		log.info("Change_Password  - Step 09: Navigate to 'Login' Page");
+		loginPage = homePage.openLoginPage();
+
+		log.info("Change_Password  - Step 10: Login with edit email = '" + editEmailAddress + "'" + " and old password = '" + password + "'");
+		homePage = loginPage.loginAsUser(editEmailAddress, password);
+
+		log.info("Change_Password  - Step 11: Verify incorrect password");
+		Assert.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+
+		log.info("Change_Password  - Step 12: Login with edit email = '" + editEmailAddress + "'" + " and new password = '" + newPassword + "'");
+		homePage = loginPage.loginAsUser(editEmailAddress, newPassword);
+
+		log.info("Change_Password  - Step 13: Verify 'My Account Link' is displayed");
+		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+
+	}
 //
 //	@Test
 //	public void User_03_My_Account() {
@@ -267,7 +307,7 @@ public class Level_20_PO_MyAccount extends BaseTest {
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		closeBrowserDriver();
+		 closeBrowserDriver();
 	}
 
 	private WebDriver driver;
@@ -277,7 +317,8 @@ public class Level_20_PO_MyAccount extends BaseTest {
 	private UserLoginPageObject loginPage;
 	private UserCustomerInfoPageObject customerInfoPage;
 	private UserAddressPageObject addressPage;
-	private String firstName, lastName, dayOfBirth, monthOfBirth, yearOfBirth, emailAddress, password;
+	private UserChangePasswordPO changePasswordPage;
+	private String firstName, lastName, dayOfBirth, monthOfBirth, yearOfBirth, emailAddress, password, newPassword;
 	private String editGender, editFirstName, editLastName, editDayOfBirth, editMonthOfBirth, editYearOfBirth, editEmailAddress, editCompanyName;
 	private String cityName, address1, address2, zipcode, phoneNumber, faxNumber, countryName, stateName;
 

@@ -32,6 +32,7 @@ public class UserCustomerInfoPageObject extends BasePage {
 	public void clickToCloseUpdateMessageIcon() {
 		waitForElementClickable(driver, BasePageNopCommerceUI.CLOSE_MESSAGE_ICON);
 		clickToElement(driver, BasePageNopCommerceUI.CLOSE_MESSAGE_ICON);
+		sleepInSecond(1);
 	}
 
 	
