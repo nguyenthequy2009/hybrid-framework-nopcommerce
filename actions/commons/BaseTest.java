@@ -129,6 +129,71 @@ public class BaseTest {
 		return driver;
 	}
 
+	protected WebDriver getBrowserDriverMultiServer(String browserName, String appUrl) {
+		BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+
+		if (browserList == BrowserList.FIREFOX) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+		} else if (browserList == BrowserList.SAFARI) {
+			driver = new SafariDriver();
+		} else if (browserList == BrowserList.H_FIREFOX) {
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x180");
+			driver = new FirefoxDriver(options);
+		} else if (browserList == BrowserList.CHROME) {
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+		} else if (browserList == BrowserList.H_CHROME) {
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x180");
+			driver = new ChromeDriver(options);
+		} else if (browserList == BrowserList.EDGE) {
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+		} else if (browserList == BrowserList.IE) {
+			WebDriverManager.iedriver().arch32().setup();
+			driver = new InternetExplorerDriver();
+		} else if (browserList == BrowserList.OPERA) {
+			WebDriverManager.operadriver().setup();
+			driver = new OperaDriver();
+		} else if (browserList == BrowserList.COCCOC) {
+			WebDriverManager.chromedriver().driverVersion("113.0.5672.63").setup();
+			ChromeOptions options = new ChromeOptions();
+			options.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
+			driver = new ChromeDriver(options);
+		} else {
+			throw new RuntimeException("Browser name invalid");
+		}
+
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(getServerUrl(appUrl));
+		return driver;
+	}
+
+	private String getServerUrl(String serverName) {
+		String url = null;
+		ServerNameList server = ServerNameList.valueOf(serverName.toUpperCase());
+		if (server == ServerNameList.DEV) {
+			url = "https://dev.nopcommerce.com/";
+		} else if (server == ServerNameList.TESTING) {
+			url = "https://demo.nopcommerce.com/";
+		} else if (server == ServerNameList.STAGING) {
+			url = "https://staging.nopcommerce.com/";
+		} else if (server == ServerNameList.PRE_PRODUCTION) {
+			url = "https://pre-prod.nopcommerce.com/";
+		} else if (server == ServerNameList.PRODUCTION) {
+			url = "https://live.nopcommerce.com/";
+		} else {
+			throw new RuntimeException("Please input correct the server name");
+		}
+		return url;
+	}
+
 	public WebDriver getDriverInstance() {
 		return this.driver;
 	}

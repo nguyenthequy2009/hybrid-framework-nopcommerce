@@ -4,10 +4,11 @@
 		<listener class-name="commons.MethodListener" />
 	</listeners>
 
+	<parameter name="environment" value="testing" />
 	<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.user.Level_20_PO_MyAccount" />
+			<class name="com.nopcommerce.user.Level_22_Multiple_Server_II_Java_Owner_Library" />
 		</classes>
 	</test>
 </suite>
