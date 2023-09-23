@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Nopcommerce" parallel="method" thread-count="3">
+
+	<listeners>
+		<listener class-name="commons.MethodListener" />
+	</listeners>
+
+	<parameter name="url" value="https://demo.nopcommerce.com/" />
+
+	<test name="Run on Firefox">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="com.nopcommerce.user.Level_22_Multiple_Server_I_TestNG_Parameter" />
+		</classes>
+	</test>
+</suite>
